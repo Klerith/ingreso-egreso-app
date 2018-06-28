@@ -7,13 +7,14 @@
               Especifique el monto y el tipo
             </p>
 
-            <form>
+            <form (ngSubmit)="crearIngresoEgreso()" [formGroup]="forma">
               
               <div class="form-group">
                 <label>Descripción</label>
                 <input type="text" 
                        class="form-control" 
                        placeholder="Descripción"
+                       formControlName="descripcion"
                        name="descripcion">
               </div>
 
@@ -22,6 +23,7 @@
                   <input type="number" 
                          class="form-control" 
                          placeholder="Monto"
+                         formControlName="monto"
                          name="monto">
                     <p>
                       Debe de ser un monto positivo
@@ -31,22 +33,22 @@
               <div class="form-group">
                   <label>Tipo</label>
                   <br>
-                  <button type="button" class="btn btn-primary btn-block">Ingreso</button>
-                  <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+                  <button (click)="tipo='egreso'" *ngIf="tipo ==='ingreso'" type="button" class="btn btn-primary btn-block">Ingreso</button>
+                  <button (click)="tipo='ingreso'" *ngIf="tipo ==='egreso'" type="button" class="btn btn-warning btn-block">Egreso</button>
               </div>
 
               <hr>
-              <button type="button" class="btn btn-success mr-2">
+              <button *ngIf="!cargando" [disabled]="forma.invalid" type="submit" class="btn btn-success mr-2">
                 <i class="fa fa-save"></i>
                 Agregar
               </button>
 
-              <!-- 
-                <button disabled class="btn btn-success mr-2">
+              
+                <button *ngIf="cargando" disabled class="btn btn-success mr-2">
                   <i class="fa fa-spin fa-sync"></i>
                   Espere por favor...
                 </button> 
-              -->
+             
               
               <button type="reset" class="btn btn-light">Cancelar</button>
 

@@ -26,6 +26,7 @@
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "firebase": "^5.1.0",
+    "ng2-charts": "^1.6.0",
     "rxjs": "^6.0.0",
     "sweetalert2": "^7.24.1",
     "zone.js": "^0.8.26"
