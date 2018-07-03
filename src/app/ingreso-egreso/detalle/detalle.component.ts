@@ -7,6 +7,8 @@ import { IngresoEgresoService } from '../ingreso-egreso.service';
 
 import Swal from 'sweetalert2';
 
+import * as fromIngresoEgreso from '../ingreso-egreso.reducer';
+
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
@@ -17,7 +19,7 @@ export class DetalleComponent implements OnInit, OnDestroy {
   items: IngresoEgreso[];
   subscription: Subscription = new Subscription();
 
-  constructor( private store: Store<AppState>,
+  constructor( private store: Store<fromIngresoEgreso.AppState>,
                public ingresoEgresoService: IngresoEgresoService) { }
 
   ngOnInit() {
